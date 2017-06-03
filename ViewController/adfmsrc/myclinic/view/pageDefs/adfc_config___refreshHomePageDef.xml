@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8"
+                id="adfc_config___refreshHomePageDef" Package="myclinic.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="refreshHome" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshHome"
+                  IsViewObjectMethod="false" DataControl="RootServiceDataControl"
+                  InstanceName="data.RootServiceDataControl.dataProvider.HomeService"
+                  ReturnName="data.RootServiceDataControl.methodResults.refreshHome_RootServiceDataControl_dataProvider_HomeService_refreshHome_result"/>
+  </bindings>
+</pageDefinition>

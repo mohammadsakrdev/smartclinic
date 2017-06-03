@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="homePageDef"
+                Package="myclinic.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="templates.mainTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="HomeService.CurrentReservationView" DataControl="RootServiceDataControl" RangeSize="25"
+              id="CurrentReservationViewIterator"/>
+    <iterator Binds="HomeService.WaitingListView" DataControl="RootServiceDataControl" RangeSize="25"
+              id="WaitingListViewIterator"/>
+    <iterator Binds="HomeService.ReservationListView" DataControl="RootServiceDataControl" RangeSize="25"
+              id="ReservationListViewIterator"/>
+    <iterator Binds="HomeService.PaymentReservationView" DataControl="RootServiceDataControl" RangeSize="25"
+              id="PaymentReservationViewIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="CurrentReservationViewIterator" id="FullName">
+      <AttrNames>
+        <Item Value="FullName"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="WaitingListViewIterator" id="WaitingListView">
+      <nodeDefinition DefName="myclinic.model.view.WaitingListView" Name="WaitingListView0">
+        <AttrNames>
+          <Item Value="FullName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" DataControl="RootServiceDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <tree IterBinding="ReservationListViewIterator" id="ReservationListView">
+      <nodeDefinition DefName="myclinic.model.view.ReservationListView" Name="ReservationListView0">
+        <AttrNames>
+          <Item Value="ReservationDate"/>
+          <Item Value="FullName"/>
+          <Item Value="TransactionId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="PaymentReservationViewIterator" id="FullName1">
+      <AttrNames>
+        <Item Value="FullName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PaymentReservationViewIterator" id="VisitCost">
+      <AttrNames>
+        <Item Value="VisitCost"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="ReservationListViewIterator" id="ExecuteReservationList"
+            InstanceName="RootServiceDataControl.Root.HomeService.ReservationListView"
+            DataControl="RootServiceDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action IterBinding="WaitingListViewIterator" id="ExecuteWaitingList"
+            InstanceName="RootServiceDataControl.Root.HomeService.WaitingListView" DataControl="RootServiceDataControl"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action IterBinding="CurrentReservationViewIterator" id="ExecuteCurrentReservation"
+            InstanceName="RootServiceDataControl.Root.HomeService.CurrentReservationView"
+            DataControl="RootServiceDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action IterBinding="PaymentReservationViewIterator" id="ExecutePayment"
+            InstanceName="RootServiceDataControl.Root.HomeService.PaymentReservationView"
+            DataControl="RootServiceDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <attributeValues IterBinding="WaitingListViewIterator" id="FullName2">
+      <AttrNames>
+        <Item Value="FullName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PaymentReservationViewIterator" id="PaidValue">
+      <AttrNames>
+        <Item Value="PaidValue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReservationListViewIterator" id="FullName3">
+      <AttrNames>
+        <Item Value="FullName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReservationListViewIterator" id="ReservationDate">
+      <AttrNames>
+        <Item Value="ReservationDate"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

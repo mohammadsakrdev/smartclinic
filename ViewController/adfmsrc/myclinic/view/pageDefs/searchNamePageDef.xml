@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="searchNamePageDef"
+                Package="myclinic.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="templates.mainTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SearchService.NameSearchView" DataControl="RootServiceDataControl" RangeSize="25"
+              id="NameSearchViewIterator"/>
+    <iterator Binds="NameLookupService.NameLookupView" DataControl="RootServiceDataControl" RangeSize="10"
+              id="NameLookupViewIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="NameSearchViewIterator" id="NameSearchView">
+      <nodeDefinition DefName="myclinic.model.view.ReservationSearchView" Name="NameSearchView0">
+        <AttrNames>
+          <Item Value="ReservationDate"/>
+          <Item Value="TransactionId"/>
+          <Item Value="Attendance"/>
+          <Item Value="VisitCost"/>
+          <Item Value="PaidValue"/>
+          <Item Value="RemainderVal"/>
+          <Item Value="Enteredby"/>
+          <Item Value="CreatedOn"/>
+          <Item Value="Editedby"/>
+          <Item Value="ModifiedOn"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="executeNameSearch" RequiresUpdateModel="true" Action="invokeMethod" MethodName="executeNameSearch"
+                  IsViewObjectMethod="true" DataControl="RootServiceDataControl"
+                  InstanceName="data.RootServiceDataControl.dataProvider.SearchService.NameSearchView"
+                  ReturnName="data.RootServiceDataControl.methodResults.executeNameSearch_RootServiceDataControl_dataProvider_SearchService_NameSearchView_executeNameSearch_result">
+      <NamedData NDName="name" NDType="java.lang.String"/>
+      <NamedData NDName="start" NDType="oracle.jbo.domain.Date"/>
+      <NamedData NDName="end" NDType="oracle.jbo.domain.Date"/>
+    </methodAction>
+    <methodAction id="setnamebv" RequiresUpdateModel="true" Action="invokeMethod" MethodName="setnamebv"
+                  IsViewObjectMethod="true" DataControl="RootServiceDataControl"
+                  InstanceName="data.RootServiceDataControl.dataProvider.NameLookupService.NameLookupView"
+                  ReturnName="data.RootServiceDataControl.methodResults.setnamebv_RootServiceDataControl_dataProvider_NameLookupService_NameLookupView_setnamebv_result">
+      <NamedData NDName="value" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="NameLookupViewIterator" id="NameLookupView">
+      <nodeDefinition DefName="myclinic.model.view.lov.NameLookupLOV" Name="NameLookupView0">
+        <AttrNames>
+          <Item Value="FullName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="NameSearchViewIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="RootServiceDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="RootServiceDataControl"/>
+  </bindings>
+</pageDefinition>

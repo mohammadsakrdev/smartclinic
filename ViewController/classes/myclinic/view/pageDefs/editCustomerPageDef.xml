@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="editCustomerPageDef"
+                Package="myclinic.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="templates.secondrytemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="CustomersService.CustomersView" DataControl="RootServiceDataControl" RangeSize="25"
+              id="CustomersViewIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="CustomersViewIterator" id="FullName">
+      <AttrNames>
+        <Item Value="FullName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="CustomersViewIterator" StaticList="false" Uses="ENGLOV" id="GenderId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="CustomersViewIterator" id="BirthDate">
+      <AttrNames>
+        <Item Value="BirthDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="JobTitle">
+      <AttrNames>
+        <Item Value="JobTitle"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="PhoneNumber">
+      <AttrNames>
+        <Item Value="PhoneNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="Address">
+      <AttrNames>
+        <Item Value="Address"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="CustomersViewIterator" StaticList="false" Uses="LOV_Heart" id="Heart" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Heart"/>
+      </AttrNames>
+    </button>
+    <button IterBinding="CustomersViewIterator" StaticList="false" Uses="LOV_Chest" id="Chest" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Chest"/>
+      </AttrNames>
+    </button>
+    <button IterBinding="CustomersViewIterator" StaticList="false" Uses="LOV_Blood" id="Blood" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Blood"/>
+      </AttrNames>
+    </button>
+    <button IterBinding="CustomersViewIterator" StaticList="false" Uses="LOV_BloodPressaure" id="BloodPressaure"
+            DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="BloodPressaure"/>
+      </AttrNames>
+    </button>
+    <button IterBinding="CustomersViewIterator" StaticList="false" Uses="LOV_Liver" id="Liver" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Liver"/>
+      </AttrNames>
+    </button>
+    <button IterBinding="CustomersViewIterator" StaticList="false" Uses="LOV_Kidney" id="Kidney" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Kidney"/>
+      </AttrNames>
+    </button>
+    <button IterBinding="CustomersViewIterator" StaticList="false" Uses="LOV_Diabets" id="Diabets"
+            DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Diabets"/>
+      </AttrNames>
+    </button>
+    <button IterBinding="CustomersViewIterator" StaticList="false" Uses="LOV_Allergy" id="Allergy"
+            DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Allergy"/>
+      </AttrNames>
+    </button>
+    <button IterBinding="CustomersViewIterator" StaticList="false" Uses="LOV_Surgery" id="Surgery"
+            DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Surgery"/>
+      </AttrNames>
+    </button>
+    <button IterBinding="CustomersViewIterator" StaticList="false" Uses="LOV_HospitalResidency" id="HospitalResidency"
+            DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="HospitalResidency"/>
+      </AttrNames>
+    </button>
+    <button IterBinding="CustomersViewIterator" StaticList="false" Uses="LOV_Medications" id="Medications"
+            DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Medications"/>
+      </AttrNames>
+    </button>
+    <button IterBinding="CustomersViewIterator" StaticList="false" Uses="LOV_Pregnant" id="Pregnant"
+            DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Pregnant"/>
+      </AttrNames>
+    </button>
+    <button IterBinding="CustomersViewIterator" StaticList="false" Uses="LOV_Nursing" id="Nursing"
+            DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Nursing"/>
+      </AttrNames>
+    </button>
+    <button IterBinding="CustomersViewIterator" StaticList="false" Uses="LOV_Smoking" id="Smoking"
+            DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Smoking"/>
+      </AttrNames>
+    </button>
+    <button IterBinding="CustomersViewIterator" StaticList="false" Uses="LOV_Otherdiseases" id="Otherdiseases"
+            DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Otherdiseases"/>
+      </AttrNames>
+    </button>
+    <attributeValues IterBinding="CustomersViewIterator" id="WriteOthers">
+      <AttrNames>
+        <Item Value="WriteOthers"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="Enteredby">
+      <AttrNames>
+        <Item Value="Enteredby"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="CreatedOn">
+      <AttrNames>
+        <Item Value="CreatedOn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="Editedby">
+      <AttrNames>
+        <Item Value="Editedby"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersViewIterator" id="ModifiedOn">
+      <AttrNames>
+        <Item Value="ModifiedOn"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="RootServiceDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="RootServiceDataControl"/>
+  </bindings>
+</pageDefinition>

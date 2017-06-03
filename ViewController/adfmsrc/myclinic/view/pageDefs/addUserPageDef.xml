@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="addUserPageDef"
+                Package="myclinic.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="templates.secondrytemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="UsersService.AddUserView" DataControl="RootServiceDataControl" RangeSize="25"
+              id="AddUserViewIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="AddUserViewIterator" id="FullName">
+      <AttrNames>
+        <Item Value="FullName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="AddUserViewIterator" StaticList="false" Uses="LOV_GenderId" id="GenderId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="AddUserViewIterator" id="BirthDate">
+      <AttrNames>
+        <Item Value="BirthDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="AddUserViewIterator" StaticList="false" Uses="LOV_JobId" id="JobId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="AddUserViewIterator" id="PhoneNumber">
+      <AttrNames>
+        <Item Value="PhoneNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddUserViewIterator" id="Address">
+      <AttrNames>
+        <Item Value="Address"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddUserViewIterator" id="HireDate">
+      <AttrNames>
+        <Item Value="HireDate"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="AddUserViewIterator" StaticList="false" Uses="LOV_Authorized" id="Authorized"
+            DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Authorized"/>
+      </AttrNames>
+    </button>
+    <list IterBinding="AddUserViewIterator" StaticList="false" Uses="LOV_RoleId" id="RoleId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="AddUserViewIterator" id="UserName">
+      <AttrNames>
+        <Item Value="UserName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddUserViewIterator" id="UserPassword">
+      <AttrNames>
+        <Item Value="UserPassword"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="RootServiceDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="RootServiceDataControl" RequiresUpdateModel="false"
+            Action="rollbackTransaction"/>
+  </bindings>
+</pageDefinition>

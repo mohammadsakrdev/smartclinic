@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="addExpensesPageDef"
+                Package="myclinic.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="templates.secondrytemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="ExpensesService.AddExpensesView" DataControl="RootServiceDataControl" RangeSize="25"
+              id="AddExpensesViewIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="AddExpensesViewIterator" id="ExpenseDate">
+      <AttrNames>
+        <Item Value="ExpenseDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddExpensesViewIterator" id="ExpenseValue">
+      <AttrNames>
+        <Item Value="ExpenseValue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddExpensesViewIterator" id="ExpenseDescription">
+      <AttrNames>
+        <Item Value="ExpenseDescription"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="RootServiceDataControl"/>
+    <action id="Commit" DataControl="RootServiceDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8"
+                id="adfc_config___executeCurrentcasePageDef" Package="myclinic.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="executeCurrentcase" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="executeCurrentcase" IsViewObjectMethod="false" DataControl="RootServiceDataControl"
+                  InstanceName="data.RootServiceDataControl.dataProvider.CurrentCaseService"
+                  ReturnName="data.RootServiceDataControl.methodResults.executeCurrentcase_RootServiceDataControl_dataProvider_CurrentCaseService_executeCurrentcase_result"/>
+  </bindings>
+</pageDefinition>

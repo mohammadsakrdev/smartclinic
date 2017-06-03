@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.10.8" id="DataBindings"
+             SeparateXMLFiles="false" Package="myclinic.view" ClientType="Generic">
+  <pageMap>
+    <page path="/templates/mainTemplate.jsf" usageId="myclinic_view_mainTemplatePageDef"/>
+    <page path="/users.jsf" usageId="myclinic_view_usersPageDef"/>
+    <page path="/myAccount.jsf" usageId="myclinic_view_myAccountPageDef"/>
+    <page path="/searchName.jsf" usageId="myclinic_view_searchNamePageDef"/>
+    <page path="/searchDate.jsf" usageId="myclinic_view_searchDatePageDef"/>
+    <page path="/annualReport.jsf" usageId="myclinic_view_annualReportPageDef"/>
+    <page path="/report.jsf" usageId="myclinic_view_reportPageDef"/>
+    <page path="/monthlyReport.jsf" usageId="myclinic_view_monthlyReportPageDef"/>
+    <page path="/expenses.jsf" usageId="myclinic_view_expensesPageDef"/>
+    <page path="/home.jsf" usageId="myclinic_view_homePageDef"/>
+    <page path="/others.jsf" usageId="myclinic_view_othersPageDef"/>
+    <page path="/customers.jsf" usageId="myclinic_view_customersPageDef"/>
+    <page path="/searchcustomers.jsf" usageId="myclinic_view_searchcustomersPageDef"/>
+    <page path="/currentCase.jsf" usageId="myclinic_view_currentCasePageDef"/>
+    <page path="/templates/secondrytemplate.jsf" usageId="myclinic_view_secondrytemplatePageDef"/>
+    <page path="/templates/reportTemplate.jsf" usageId="myclinic_view_reportTemplatePageDef"/>
+    <page path="PageFlow#initCustomerSearch" usageId="myclinic_view_adfc_config___initCustomerSearchPageDef"/>
+    <page path="PageFlow#executeAnnualReport" usageId="myclinic_view_adfc_config___executeAnnualReportPageDef"/>
+    <page path="PageFlow#initDailyReport" usageId="myclinic_view_adfc_config___initDailyReportPageDef"/>
+    <page path="PageFlow#initMonthlyReport" usageId="myclinic_view_adfc_config___initMonthlyReportPageDef"/>
+    <page path="PageFlow#initExpenses" usageId="myclinic_view_adfc_config___initExpensesPageDef"/>
+    <page path="PageFlow#refreshHome" usageId="myclinic_view_adfc_config___refreshHomePageDef"/>
+    <page path="PageFlow#executeCurrentcase" usageId="myclinic_view_adfc_config___executeCurrentcasePageDef"/>
+    <page path="/addCustomer.jsf" usageId="myclinic_view_addCustomerPageDef"/>
+    <page path="/customerReservation.jsf" usageId="myclinic_view_addCustomerReservationPageDef"/>
+    <page path="PageFlow#addCustomerReservation" usageId="myclinic_view_adfc_config___addCustomerReservationPageDef"/>
+    <page path="PageFlow#initExistedCustomer" usageId="myclinic_view_adfc_config___initExistedCustomerPageDef"/>
+    <page path="/existedReservation.jsf" usageId="myclinic_view_existedReservationPageDef"/>
+    <page path="/addExpenses.jsf" usageId="myclinic_view_addExpensesPageDef"/>
+    <page path="/addUser.jsf" usageId="myclinic_view_addUserPageDef"/>
+    <page path="PageFlow#handleException" usageId="myclinic_view_adfc_config___handleExceptionPageDef"/>
+    <page path="/editCustomer.jsf" usageId="myclinic_view_editCustomerPageDef"/>
+    <page path="/main.jsf" usageId="myclinic_view_mainPageDef"/>
+    <page path="/index.jsf" usageId="myclinic_view_indexPageDef"/>
+    <page path="PageFlow#initNameSearch1" usageId="myclinic_view_adfc_config___initNameSearch1PageDef"/>
+    <page path="PageFlow#initDateSearch" usageId="myclinic_view_adfc_config___initDateSearchPageDef"/>
+    <page path="PageFlow#initNameSearch" usageId="myclinic_view_adfc_config___initNameSearchPageDef"/>
+    <page path="PageFlow#CreateInsert" usageId="myclinic_view_adfc_config___CreateInsertPageDef"/>
+    <page path="PageFlow#CreateCustomer" usageId="myclinic_view_adfc_config___CreateInsert1PageDef"/>
+    <page path="PageFlow#SetCurrentRowWithKey" usageId="myclinic_view_adfc_config___SetCurrentRowWithKeyPageDef"/>
+    <page path="PageFlow#CreateUser" usageId="myclinic_view_adfc_config___CreateInsert1PageDef1"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="myclinic_view_mainTemplatePageDef" path="templates.mainTemplatePageDef"/>
+    <page id="myclinic_view_usersPageDef" path="myclinic.view.pageDefs.usersPageDef"/>
+    <page id="myclinic_view_myAccountPageDef" path="myclinic.view.pageDefs.myAccountPageDef"/>
+    <page id="myclinic_view_searchNamePageDef" path="myclinic.view.pageDefs.searchNamePageDef"/>
+    <page id="myclinic_view_searchDatePageDef" path="myclinic.view.pageDefs.searchDatePageDef"/>
+    <page id="myclinic_view_annualReportPageDef" path="myclinic.view.pageDefs.annualReportPageDef"/>
+    <page id="myclinic_view_reportPageDef" path="myclinic.view.pageDefs.reportPageDef"/>
+    <page id="myclinic_view_monthlyReportPageDef" path="myclinic.view.pageDefs.monthlyReportPageDef"/>
+    <page id="myclinic_view_expensesPageDef" path="myclinic.view.pageDefs.expensesPageDef"/>
+    <page id="myclinic_view_homePageDef" path="myclinic.view.pageDefs.homePageDef"/>
+    <page id="myclinic_view_othersPageDef" path="myclinic.view.pageDefs.othersPageDef"/>
+    <page id="myclinic_view_customersPageDef" path="myclinic.view.pageDefs.customersPageDef"/>
+    <page id="myclinic_view_searchcustomersPageDef" path="myclinic.view.pageDefs.searchcustomersPageDef"/>
+    <page id="myclinic_view_currentCasePageDef" path="myclinic.view.pageDefs.currentCasePageDef"/>
+    <page id="myclinic_view_secondrytemplatePageDef" path="templates.secondrytemplatePageDef"/>
+    <page id="myclinic_view_reportTemplatePageDef" path="templates.reportTemplatePageDef"/>
+    <page id="myclinic_view_adfc_config___initCustomerSearchPageDef"
+          path="myclinic.view.pageDefs.adfc_config___initCustomerSearchPageDef"/>
+    <page id="myclinic_view_adfc_config___executeAnnualReportPageDef"
+          path="myclinic.view.pageDefs.adfc_config___executeAnnualReportPageDef"/>
+    <page id="myclinic_view_adfc_config___initDailyReportPageDef"
+          path="myclinic.view.pageDefs.adfc_config___initDailyReportPageDef"/>
+    <page id="myclinic_view_adfc_config___initMonthlyReportPageDef"
+          path="myclinic.view.pageDefs.adfc_config___initMonthlyReportPageDef"/>
+    <page id="myclinic_view_adfc_config___initExpensesPageDef"
+          path="myclinic.view.pageDefs.adfc_config___initExpensesPageDef"/>
+    <page id="myclinic_view_adfc_config___refreshHomePageDef"
+          path="myclinic.view.pageDefs.adfc_config___refreshHomePageDef"/>
+    <page id="myclinic_view_adfc_config___executeCurrentcasePageDef"
+          path="myclinic.view.pageDefs.adfc_config___executeCurrentcasePageDef"/>
+    <page id="myclinic_view_addCustomerPageDef" path="myclinic.view.pageDefs.addCustomerPageDef"/>
+    <page id="myclinic_view_addCustomerReservationPageDef" path="myclinic.view.pageDefs.addCustomerReservationPageDef"/>
+    <page id="myclinic_view_adfc_config___addCustomerReservationPageDef"
+          path="myclinic.view.pageDefs.adfc_config___addCustomerReservationPageDef"/>
+    <page id="myclinic_view_adfc_config___initExistedCustomerPageDef"
+          path="myclinic.view.pageDefs.adfc_config___initExistedCustomerPageDef"/>
+    <page id="myclinic_view_existedReservationPageDef" path="myclinic.view.pageDefs.existedReservationPageDef"/>
+    <page id="myclinic_view_addExpensesPageDef" path="myclinic.view.pageDefs.addExpensesPageDef"/>
+    <page id="myclinic_view_addUserPageDef" path="myclinic.view.pageDefs.addUserPageDef"/>
+    <page id="myclinic_view_adfc_config___handleExceptionPageDef"
+          path="myclinic.view.pageDefs.adfc_config___handleExceptionPageDef"/>
+    <page id="myclinic_view_editCustomerPageDef" path="myclinic.view.pageDefs.editCustomerPageDef"/>
+    <page id="myclinic_view_mainPageDef" path="myclinic.view.pageDefs.mainPageDef"/>
+    <page id="myclinic_view_indexPageDef" path="myclinic.view.pageDefs.indexPageDef"/>
+    <page id="myclinic_view_adfc_config___initNameSearch1PageDef"
+          path="myclinic.view.pageDefs.adfc_config___initNameSearch1PageDef"/>
+    <page id="myclinic_view_adfc_config___initDateSearchPageDef"
+          path="myclinic.view.pageDefs.adfc_config___initDateSearchPageDef"/>
+    <page id="myclinic_view_adfc_config___initNameSearchPageDef"
+          path="myclinic.view.pageDefs.adfc_config___initNameSearchPageDef"/>
+    <page id="myclinic_view_adfc_config___CreateInsertPageDef"
+          path="myclinic.view.pageDefs.adfc_config___CreateInsertPageDef"/>
+    <page id="myclinic_view_adfc_config___CreateInsert1PageDef"
+          path="myclinic.view.pageDefs.adfc_config___CreateInsert1PageDef"/>
+    <page id="myclinic_view_adfc_config___SetCurrentRowWithKeyPageDef"
+          path="myclinic.view.pageDefs.adfc_config___SetCurrentRowWithKeyPageDef"/>
+    <page id="myclinic_view_adfc_config___CreateInsert1PageDef1"
+          path="myclinic.view.pageDefs.adfc_config___CreateInsert1PageDef1"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="ExceptionHandler" path="myclinic.view.ExceptionHandler"/>
+    <BC4JDataControl id="RootServiceDataControl" Package="myclinic.model.services"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="RootServiceLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

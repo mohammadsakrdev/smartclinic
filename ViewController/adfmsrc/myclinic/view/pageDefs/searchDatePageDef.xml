@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="searchDatePageDef"
+                Package="myclinic.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="templates.mainTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SearchService.DateSearchView" DataControl="RootServiceDataControl" RangeSize="25"
+              id="DateSearchViewIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="DateSearchViewIterator" id="DateSearchView">
+      <nodeDefinition DefName="myclinic.model.view.ReservationSearchView" Name="DateSearchView0">
+        <AttrNames>
+          <Item Value="FullName"/>
+          <Item Value="ReservationDate"/>
+          <Item Value="TransactionId"/>
+          <Item Value="Attendance"/>
+          <Item Value="VisitCost"/>
+          <Item Value="PaidValue"/>
+          <Item Value="RemainderVal"/>
+          <Item Value="Enteredby"/>
+          <Item Value="ModifiedOn"/>
+          <Item Value="Editedby"/>
+          <Item Value="CreatedOn"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="executeDateSearch" RequiresUpdateModel="true" Action="invokeMethod" MethodName="executeDateSearch"
+                  IsViewObjectMethod="true" DataControl="RootServiceDataControl"
+                  InstanceName="data.RootServiceDataControl.dataProvider.SearchService.DateSearchView"
+                  ReturnName="data.RootServiceDataControl.methodResults.executeDateSearch_RootServiceDataControl_dataProvider_SearchService_DateSearchView_executeDateSearch_result">
+      <NamedData NDName="start" NDType="oracle.jbo.domain.Date"/>
+      <NamedData NDName="end" NDType="oracle.jbo.domain.Date"/>
+    </methodAction>
+    <action IterBinding="DateSearchViewIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="RootServiceDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="RootServiceDataControl"/>
+  </bindings>
+</pageDefinition>

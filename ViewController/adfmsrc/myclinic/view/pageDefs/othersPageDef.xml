@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="othersPageDef"
+                Package="myclinic.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="templates.mainTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="OthersService.TransactionsView" DataControl="RootServiceDataControl" RangeSize="25"
+              id="TransactionsViewIterator"/>
+    <iterator Binds="OthersService.complaintView" DataControl="RootServiceDataControl" RangeSize="25"
+              id="complaintViewIterator"/>
+    <iterator Binds="OthersService.ProcedureView" DataControl="RootServiceDataControl" RangeSize="25"
+              id="ProcedureViewIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="TransactionsViewIterator" id="TransactionsView">
+      <nodeDefinition DefName="myclinic.model.view.TransactionsView" Name="TransactionsView0">
+        <AttrNames>
+          <Item Value="ArabicName"/>
+          <Item Value="EnglishName"/>
+          <Item Value="ReqValue"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="RootServiceDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="RootServiceDataControl"/>
+    <tree IterBinding="complaintViewIterator" id="complaintView">
+      <nodeDefinition DefName="myclinic.model.view.complaintView" Name="complaintView0">
+        <AttrNames>
+          <Item Value="ArName"/>
+          <Item Value="EnName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="complaintViewIterator" id="CreateComplaint" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <tree IterBinding="ProcedureViewIterator" id="ProcedureView">
+      <nodeDefinition DefName="myclinic.model.view.ProcedureView" Name="ProcedureView0">
+        <AttrNames>
+          <Item Value="ArName"/>
+          <Item Value="EnName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ProcedureViewIterator" id="CreateProcedure" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>
