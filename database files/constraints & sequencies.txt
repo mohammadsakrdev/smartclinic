@@ -1,0 +1,242 @@
+
+primary key
+
+alter table customers add constraint customer_id_pk PRIMARY key (customer_id);
+
+alter table reservations add constraint reservation_id_pk PRIMARY key (reservation_id);
+
+alter table transactions add constraint transaction_id_pk PRIMARY key (transaction_id);
+
+alter table gender add constraint gender_id_pk PRIMARY key (gender_id);
+
+alter table notes add constraint note_id_pk PRIMARY key (note_id);
+
+alter table teeth_classes add constraint tooth_class_id_pk PRIMARY key (class_id);
+
+alter table teeth add constraint tooth_id_pk PRIMARY key (tooth_id);
+
+alter table dental_history add constraint dental_history_id_pk PRIMARY key (history_id);
+
+alter table users add constraint user_id_pk PRIMARY key (user_id);
+
+alter table pages add constraint page_id_pk PRIMARY key (page_id);
+
+alter table users_roles add constraint users_role_id_pk PRIMARY key (role_id);
+
+alter table users_jobs add constraint users_job_id_pk PRIMARY key (job_id);
+
+alter table users_priv add constraint users_priv_id_pk PRIMARY key (priv_id);
+
+alter table expenses add constraint expense_id_pk PRIMARY key (expense_id);
+
+alter table chef_complaint add constraint complaint_id_id_pk PRIMARY key (complaint_id);
+
+alter table medical_procedures add constraint procedure_id PRIMARY key (procedure_id);
+
+alter table missed_teeth add constraint missed_teeth_id_pk primary key (missed_teeth_id);
+
+alter table bridge_teeth add constraint bridge_id_pk primary key (bridge_id);
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+foreign key
+
+alter table customers add CONSTRAINT customers_gender_id_fk FOREIGN key (gender_id) REFERENCES gender (gender_id);
+
+alter table customers add CONSTRAINT customers_created_by_fk FOREIGN key (created_by) REFERENCES users (user_id);
+
+alter table customers add CONSTRAINT customers_modified_by_fk FOREIGN key (modified_by) REFERENCES users (user_id);
+
+alter table reservations add CONSTRAINT reservations_customer_id_fk FOREIGN key (customer_id) REFERENCES customers (customer_id);
+
+alter table reservations add CONSTRAINT reservations_created_by_fk FOREIGN key (created_by) REFERENCES users (user_id);
+
+alter table reservations add CONSTRAINT reservations_modified_by_fk FOREIGN key (modified_by) REFERENCES users (user_id);
+
+alter table reservations add CONSTRAINT reservations_transaction_id_fk FOREIGN key (transaction_id) REFERENCES transactions (transaction_id) ;
+
+alter table notes add CONSTRAINT notes_customer_id_fk FOREIGN key (customer_id) REFERENCES customers (customer_id);
+
+alter table dental_history add CONSTRAINT dental_his_class_id_fk FOREIGN key (class_id) REFERENCES teeth_classes (class_id);
+
+alter table dental_history add CONSTRAINT dental_his_tooth_id_fk FOREIGN key (tooth_id) REFERENCES teeth (tooth_id);
+
+alter table dental_history add CONSTRAINT dental_his_reservation_id_fk FOREIGN key (reservation_id) REFERENCES reservations (reservation_id);
+
+alter table dental_history add CONSTRAINT dental_his_customer_id_fk FOREIGN key (customer_id) REFERENCES customers (customer_id);
+
+alter table users add CONSTRAINT users_job_id_fk FOREIGN key (job_id) REFERENCES users_jobs (job_id);
+
+alter table users add CONSTRAINT users_role_id_fk FOREIGN key (role_id) REFERENCES users_roles (role_id);
+
+alter table users add CONSTRAINT users_gender_id_fk FOREIGN key (gender_id) REFERENCES gender (gender_id);
+
+alter table users_priv add CONSTRAINT users_priv_user_id_fk FOREIGN key (user_id) REFERENCES users (user_id);
+
+alter table users_priv add CONSTRAINT users_priv_page_id_fk FOREIGN key (page_id) REFERENCES pages (page_id);
+
+alter table expenses add CONSTRAINT expenses_created_by_fk FOREIGN key (created_by) REFERENCES users (user_id);
+
+alter table expenses add CONSTRAINT expenses_modified_by_fk FOREIGN key (modified_by) REFERENCES users (user_id);
+
+alter table prescription add constraint prescription_reservation_id_fk foreign key (reservation_id) references reservations (reservation_id) ;
+
+alter table dental_history add constraint complaint_id_fk foreign key (complaint_id) references chef_complaint(complaint_id);
+
+alter table dental_history add constraint procedure_id_fk foreign key (procedure_id) references medical_procedures(procedure_id);
+
+alter table missed_teeth add constraint missed_customer_id_fk foreign key (customer_id) references customers (customer_id);
+
+alter table bridge_teeth add constraint bridge_missed_teeth_fk foreign key (missed_teeth_id)references missed_teeth (missed_teeth_id);
+
+alter table bridge_teeth add CONSTRAINT bridge_tooth_id_fk FOREIGN key (tooth_id) REFERENCES teeth (tooth_id);
+
+alter table bridge_teeth add CONSTRAINT bridge_class_id_fk FOREIGN key (class_id) REFERENCES teeth_classes (class_id);
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+check constraints
+
+alter table reservations add constraint reservations_visit_cost_check check (visit_cost >= 0 );
+
+alter table transactions add constraint transaction_req_value_check check (req_value >= 0 );
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+unique constraints
+
+alter table users add constraint users_user_name_uq UNIQUE (user_name);
+
+alter table users add constraint users_user_password_uq UNIQUE (user_password);
+
+alter table customers add constraint customers_full_name_uq UNIQUE (full_name);
+
+alter table users_priv add constraint users_priv_page_user_id_uq UNIQUE (user_id,page_id);
+
+alter table transactions add constraint transactions_req_val_nn check(req_value is not null);
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sequencies
+
+create sequence customer_id_seq 
+minvalue 1
+nomaxvalue
+start with 1
+increment by 1
+cache 5 
+nocycle ;
+
+----------
+
+create sequence reservation_id_seq 
+minvalue 1
+nomaxvalue
+start with 1
+increment by 1
+nocache 
+nocycle ;
+
+----------
+
+create sequence note_id_seq
+minvalue 1
+nomaxvalue 
+start with 1
+increment by 1
+nocache 
+nocycle ;
+
+----------
+
+create sequence dental_history_id_seq
+minvalue 1
+nomaxvalue
+start with 1
+increment by 1
+nocache 
+nocycle ;
+
+-----------
+
+create sequence users_user_id_seq 
+minvalue 1
+nomaxvalue
+start with 1
+increment by 1
+cache 5 
+nocycle ;
+
+-------------
+
+create sequence users_priv_id_seq 
+minvalue 1
+nomaxvalue
+start with 1
+increment by 1
+cache 5 
+nocycle ;
+
+------------
+
+create sequence expenses_expense_id_seq 
+minvalue 1
+nomaxvalue
+start with 1
+increment by 1
+cache 5 
+nocycle ;
+
+------------
+
+create sequence prescription_id_seq 
+minvalue 1
+nomaxvalue
+start with 1
+increment by 1
+cache 5 
+nocycle ;
+
+-------------
+
+create sequence complaint_id_seq 
+minvalue 1
+nomaxvalue
+start with 1
+increment by 1
+cache 5 
+nocycle ;
+
+-------------
+
+create sequence procedure_id_seq 
+minvalue 1
+nomaxvalue
+start with 1
+increment by 1
+cache 5 
+nocycle ;
+
+-------------
+
+create sequence missed_teeth_id_seq 
+minvalue 1
+nomaxvalue
+start with 1
+increment by 1
+cache 5 
+nocycle ;
+
+--------------
+
+create sequence bridge_id_seq 
+minvalue 1
+nomaxvalue
+start with 1
+increment by 1
+cache 5 
+nocycle ;
+
+

@@ -1,0 +1,333 @@
+
+craete user myclinic identified by myclinic;
+
+grant dba to myclinic;
+
+grant create session to myclinic;
+
+grant connect to myclinic;
+
+grant resource to myclinic;
+
+-------------------------------------------------------------------------------------------------------------
+
+create table customers
+(customer_id number,
+full_name varchar2(60) not null,
+gender_id number not null ,
+birth_date date not null ,
+job_title varchar2(30) not null ,
+phone_number varchar2(15) not null ,
+address varchar2(25) not null,
+chest varchar2(6) ,
+blood varchar2(6),
+liver varchar2(6),
+kidney varchar2(6),
+blood_pressaure varchar2(6),
+surgery varchar2(6) ,
+hospital_residency varchar2(6) ,
+medications varchar2(6),
+allergy varchar2(6),
+pregnant varchar2(6),
+nursing varchar2(6),
+smoking varchar2(6),
+diabets varchar2(6),
+heart varchar2(6),
+otherDiseases varchar2(6) ,
+write_others varchar2(300),
+created_on timestamp , 
+created_by number ,
+modified_on timestamp ,
+modified_by number,
+customer_flag varchar2(10) );
+
+----------------------
+create table reservations 
+(reservation_id number ,
+customer_id number not null ,
+reservation_date date not null ,
+transaction_id number not null ,
+attendance varchar2(5),
+visit_cost number ,
+paid_value number,
+customer_case varchar2(15),
+created_on timestamp , 
+created_by number ,
+modified_on timestamp ,
+modified_by number );
+
+-----------------------
+
+create table transactions
+(transaction_id number ,
+english_name varchar2(15) not null,
+arabic_name varchar2(15) not null,
+req_value number  );
+
+-----------------------
+
+create table gender
+(gender_id number ,
+english_name varchar(10) not null,
+arabic_name varchar(10) not null );
+
+-----------------------
+
+create table notes
+(note_id number ,
+customer_id number not null,
+note_text varchar2(1500) not null ,
+created_on timestamp , 
+modified_on timestamp);
+
+-----------------------
+
+create table teeth_classes
+(class_id varchar2(2) ,
+class_name varchar2(15) not null);
+
+-----------------------
+
+create table teeth
+(tooth_id number ,
+tooth_name varchar2(5) not null);
+
+-----------------------
+
+create table dental_history
+(history_id number ,
+class_id varchar2(3),
+tooth_id number ,
+Diagnosis varchar2(4000),
+reservation_id number not null,
+customer_id number not null,
+complaint_id number,
+procedure_id number,
+created_on timestamp , 
+modified_on timestamp);
+
+------------------------
+
+create table users
+(user_id number ,
+full_name varchar2(120) not null ,
+birth_date date not null,
+user_name varchar2(12) not null,
+user_password varchar2(12) not null ,
+authorized varchar2(5) ,
+job_id number not null , 
+role_id number not null,
+gender_id number not null,
+hire_date date not null,
+phone_number varchar2(15) not null,
+address varchar2(25) not null);
+
+-----------------------
+
+create table pages
+(page_id number ,
+page_name varchar2(50) not null );
+
+------------------------
+
+create table users_roles
+(role_id number,
+role_name varchar2(30) not null );
+
+----------------------
+
+create table users_jobs
+(job_id number,
+job_title varchar2(50));
+
+-----------------------
+
+create table users_priv
+(priv_id number ,
+user_id number not null ,
+page_id number not null ,
+access_page varchar2(5),
+insert_record varchar2(5),
+edit_record varchar2(5) ,
+search varchar2(5) ,
+delete_record varchar2(5) );
+
+-----------------------
+
+create table expenses
+(expense_id number ,
+expense_date date not null ,
+expense_value number(10,2) not null ,
+expense_description varchar2(2000) not null,
+created_on timestamp , 
+created_by number ,
+modified_on timestamp ,
+modified_by number  );
+
+----------------------
+
+create table prescription 
+(prescription_id number,
+prescription_text varchar2(4000) not null,
+reservation_id number not null,
+customer_id number not null,
+created_on TIMESTAMP,
+modified_on TIMESTAMP);
+
+----------------------
+
+create table chef_complaint
+(complaint_id number ,
+en_name varchar2(120) not null,
+ar_name varchar2(120) not null);
+
+-----------------------
+
+create table medical_procedures
+(procedure_id number ,
+en_name varchar2(120) not null,
+ar_name varchar2(120) not null);
+
+-----------------------
+
+create table missed_teeth
+(missed_teeth_id number ,
+customer_id number,
+ul1 varchar2(6),
+ul2 varchar2(6),
+ul3 varchar2(6),
+ul4 varchar2(6),
+ul5 varchar2(6),
+ul6 varchar2(6),
+ul7 varchar2(6),
+ul8 varchar2(6),
+ulA varchar2(6),
+ulB varchar2(6),
+ulC varchar2(6),
+ulD varchar2(6),
+ulE varchar2(6),
+ur1 varchar2(6),
+ur2 varchar2(6),
+ur3 varchar2(6),
+ur4 varchar2(6),
+ur5 varchar2(6),
+ur6 varchar2(6),
+ur7 varchar2(6),
+ur8 varchar2(6),
+urA varchar2(6),
+urB varchar2(6),
+urC varchar2(6),
+urD varchar2(6),
+urE varchar2(6),
+ll1 varchar2(6),
+ll2 varchar2(6),
+ll3 varchar2(6),
+ll4 varchar2(6),
+ll5 varchar2(6),
+ll6 varchar2(6),
+ll7 varchar2(6),
+ll8 varchar2(6),
+llA varchar2(6),
+llB varchar2(6),
+llC varchar2(6),
+llD varchar2(6),
+llE varchar2(6),
+lr1 varchar2(6),
+lr2 varchar2(6),
+lr3 varchar2(6),
+lr4 varchar2(6),
+lr5 varchar2(6),
+lr6 varchar2(6),
+lr7 varchar2(6),
+lr8 varchar2(6),
+lrA varchar2(6),
+lrB varchar2(6),
+lrC varchar2(6),
+lrD varchar2(6),
+lrE varchar2(6),
+created_on TIMESTAMP,
+modified_on TIMESTAMP);
+
+---------------------
+
+create table bridge_teeth
+(bridge_id number,
+missed_teeth_id number not null,
+class_id varchar2(3) not null,
+tooth_id number not null );
+
+--------------------
+
+create index name_lookup_index on customers (customer_id,full_name);
+
+create index customers_flag_index on customers (customer_id,customer_flag);
+
+create index reservation_flag_index on reservations (reservation_id,reservation_date,customer_case);
+
+---------------------
+
+insert all 
+into pages values(1,'Reservation')
+into pages values(2,'Customers')
+into pages values(3,'Users')
+into PAGES values(4,'Expenses')
+into PAGES values(5,'Reports')
+into pages values (6,'Others')
+select * from dual;
+
+--------------------
+
+insert all
+into TEETH_CLASSES values ('UL','Upper Left')
+into TEETH_CLASSES values ('UR','Upper Right')
+into TEETH_CLASSES values ('LL','Lower Left')
+into TEETH_CLASSES values('LR','Lower Right')
+select * from dual;
+
+-------------------
+
+insert all
+into TEETH values (1,'1')
+into TEETH values (2,'2')
+into TEETH values (3,'3')
+into TEETH values(4,'4')
+into TEETH values(5,'5')
+into TEETH values(6,'6')
+into TEETH values(7,'7')
+into TEETH values(8,'8')
+into TEETH values(9,'A')
+into TEETH values(10,'B')
+into TEETH values(11,'C')
+into TEETH values(12,'D')
+into TEETH values(13,'E')
+select * from dual;
+
+--------------------
+
+insert all
+into USERS_JOBS values(1,'Doctor')
+into USERS_JOBS values (2,'Assistant')
+select * from dual;
+
+---------------------
+
+insert all
+into USERS_ROLES values(1,'Admin')
+into USERS_ROLES values (2,'User')
+select * from dual;
+
+---------------------
+
+ insert into users
+values
+(users_user_id_seq.NEXTVAL,'doctor',to_date('10/10/1970','dd/MM/yyyy'),'dr','dr','yes',1,1,1,to_date(SYSDATE,'dd/MM/yyyy'),'3453434'
+,'cairo');
+
+--------------------
+
+insert all
+into transactions values(1,'Check','ßÔÝ',20)
+into transactions values(2,'Follow up','ÅÚÇÏÉ',10)
+select * from dual;
+
+----------------------
